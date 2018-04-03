@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
 var PORT = process.env.PORT || 3000;
+var routes = require('./controller/routes');
 
 //config handlebars
 app.engine("handlebars", exphbs({
@@ -12,6 +13,7 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
+app.use(routes);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
